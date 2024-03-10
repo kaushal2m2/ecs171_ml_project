@@ -1,0 +1,5 @@
+The colume "id" is deleted
+"gender", "ever_married", "work_type", "Residence_type" are onehot encoded
+
+Special function to process colume "smoking_status"
+Special function to process NA in colume bmi
