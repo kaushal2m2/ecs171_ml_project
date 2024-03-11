@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 
 def pre_process_df(df):
-    df = df.drop(columns=['id'])
-    df['bmi'] = df['bmi'].fillna(df['bmi'].mean())
+    # df = df.drop(columns=['id'])
+    # df['bmi'] = df['bmi'].fillna(df['bmi'].mean())
 
     cats = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
     encoder = load('encoder/encoder.joblib')
@@ -34,7 +34,7 @@ def main():
     yn = ["Yes", "No"]
     work_types = ["Govt_job","Never_worked","Private","Self-employed","children"]
     Residence_types = ["Rural","Urban"]
-    smoking_statuses = ["never smoked", "formerly smoked", "smokes", "Unknown"]
+    smoking_statuses = ["Unknown", "formerly smoked", "never smoked", "smokes"]
     
     gender = st.selectbox("Gender:", genders) 
     age = st.text_input("Age: ", "0")
