@@ -4,12 +4,32 @@ from joblib import load
 import numpy as np
 import pandas as pd
 
+def pre_process_df(df):
+    df = df.drop(columns=['id'])
+    df['bmi'] = df['bmi'].fillna(df['bmi'].mean())
+
+    cats = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
+    encoder = load('encoder/encoder.joblib')
+    df[cats] = encoder.fit_transform(df[cats])
+    df = pd.get_dummies(df, columns = ["work_type", "Residence_type"], dtype=int)
+
+    num = ["age", "avg_glucose_level", "bmi"]
+    scaler = load('scaler/scaler.joblib')
+    df[num] = scaler.fit_transform(df[num])
+
+    X = df.drop('stroke', axis=1)
+    y = df['stroke']
+
+    return X, y
+
+
 def main():
     st.title("Stroke Prediction App")
     st.markdown("""
     <h2 style='text-align: center;'>Please enter prediction info</h2>
     """, unsafe_allow_html=True)
 
+    # user input
     genders = ["Female", "Male", "Other"]
     yn = ["Yes", "No"]
     work_types = ["Govt_job","Never_worked","Private","Self-employed","children"]
@@ -26,20 +46,6 @@ def main():
     avg_glucose_level = st.text_input("Average Glucose Level: ", "0")
     bmi = st.text_input("BMI: ", "0")
     smoking_status = st.selectbox("Smoking Status",smoking_statuses)
-
-    # st.markdown(f"""<h4 style='text-align: center;'>
-    #     Here is the info recieved:<br/>
-    #     Gender: {gender}<br/>
-    #     Age: {age}<br/>
-    #     hypertension: {hypertension}<br/>
-    #     heart_disease: {heart_disease}<br/>
-    #     ever_married: {ever_married}<br/>
-    #     work_type: {work_type}<br/>
-    #     Residence_type: {Residence_type}<br/>
-    #     avg_glucose_level: {avg_glucose_level}<br/>
-    #     bmi: {bmi}<br/>
-    #     smoking_status: {smoking_status}<br/>
-    # </h4>""", unsafe_allow_html=True)
 
     gender = genders.index(gender)
     age = int(age)
@@ -61,6 +67,15 @@ def main():
     avg_glucose_level = float(avg_glucose_level)
     bmi = float(bmi)
     smoking_status = smoking_statuses.index(smoking_status)
+    fl = False
+
+    # file input
+    uploaded_file = st.file_uploader("Upload CSV file", type=["csv"])
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+        st.dataframe(df)
+        X, y = pre_process_df(df)
+        fl = True
 
     if st.button("Predict"):
         rf_model = load('models/rf_model.joblib')
@@ -71,20 +86,26 @@ def main():
         knn_model = load('models/knn_model.joblib')
         stacking_classifier_model = load('models/stacking_classifier_model.joblib')
 
-        scaler = load('scaler/scaler.joblib')
-
         model_list = [rf_model, cls_model, svc_model, mlp_model, gnb_model, knn_model, stacking_classifier_model]
         model_names = ['Random Forest', 'Logistic Regression', 'SVC', 'MLP', 'Gaussian Naive Bayes', 'KNN', 'Stacking Classifier']
 
-        data = np.array([gender, age, hypertension, heart_disease, ever_married, avg_glucose_level, bmi, smoking_status, w0, w1, w2, w3, w4, r0, r1])
-        df = pd.DataFrame(data.reshape(1, -1), columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'avg_glucose_level', 'bmi', 'smoking_status', 'work_type_0.0', 'work_type_1.0', 'work_type_2.0', 'work_type_3.0', 'work_type_4.0', 'Residence_type_0.0', 'Residence_type_1.0'])
+        if fl:
+            for i in range(len(model_list)):
+                prediction = model_list[i].predict(X)
+                acc = np.mean(prediction == y)
+                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]} Accuracy: {acc}</h2>""", unsafe_allow_html=True)
+        else:
+            scaler = load('scaler/scaler.joblib')
 
-        df[['age', 'avg_glucose_level', 'bmi']] = scaler.transform(df[['age', 'avg_glucose_level', 'bmi']])
-        for i in range(len(model_list)):
-            prediction = model_list[i].predict(df)
-            pred = "Stroke" if prediction[0] == 1 else "No Stroke"
-            col = "red" if prediction[0] == 1 else "green"
-            st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]} Prediction: <span style='color: {col}'>{pred}</span></h2>""", unsafe_allow_html=True)
+            data = np.array([gender, age, hypertension, heart_disease, ever_married, avg_glucose_level, bmi, smoking_status, w0, w1, w2, w3, w4, r0, r1])
+            df = pd.DataFrame(data.reshape(1, -1), columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'avg_glucose_level', 'bmi', 'smoking_status', 'work_type_0.0', 'work_type_1.0', 'work_type_2.0', 'work_type_3.0', 'work_type_4.0', 'Residence_type_0.0', 'Residence_type_1.0'])
+
+            df[['age', 'avg_glucose_level', 'bmi']] = scaler.transform(df[['age', 'avg_glucose_level', 'bmi']])
+            for i in range(len(model_list)):
+                prediction = model_list[i].predict(df)
+                pred = "Stroke" if prediction[0] == 1 else "No Stroke"
+                col = "red" if prediction[0] == 1 else "green"
+                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]} Prediction: <span style='color: {col}'>{pred}</span></h2>""", unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
