@@ -89,17 +89,18 @@ def main():
         stacking_classifier_model = load('models/stacking_classifier_model.joblib')
 
         model_list = [cls_model, rf_model, svc_model, mlp_model, gnb_model, knn_model, stacking_classifier_model]
-        model_names = ['Logistic Regression', 'Random Forest', 'SVC', 'MLP', 'Gaussian Naive Bayes', 'KNN', 'Stacking Classifier']
+        model_names = ['Logistic Regression (preferred)', 'Random Forest', 'SVC', 'MLP', 'Gaussian Naive Bayes', 'KNN', 'Stacking Classifier']
 
         if fl:
             for i in range(len(model_list)):
                 prediction = model_list[i].predict(X)
                 confusion_matrix = metrics.confusion_matrix(y, prediction)
-                # acc = np.mean(prediction == y)
-                print(confusion_matrix[0][0])
-                acc = (confusion_matrix[0][0] + confusion_matrix[1][1]) / (confusion_matrix[0][0] + confusion_matrix[0][1] + confusion_matrix[1][0] + confusion_matrix[1][1])
-                recall = confusion_matrix[1][1] / (confusion_matrix[1][0] + confusion_matrix[1][1])
-                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]} Accuracy: {acc} \n Recall: {recall}</h2>""", unsafe_allow_html=True)
+                acc = np.mean(prediction == y)
+                acc = round(acc, 3)
+                recall = round(confusion_matrix[1][1] / (confusion_matrix[1][0] + confusion_matrix[1][1]), 3)
+                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]}</h2>
+                                <h3 style='text-align: center; color: gray'>Accuracy: {acc}</h3>
+                                <h3 style='text-align: center; color: gray'>Recall: {recall}</h3>""", unsafe_allow_html=True)
         else:
             scaler = load('scaler/scaler.joblib')
 
@@ -111,7 +112,11 @@ def main():
                 prediction = model_list[i].predict(df)
                 pred = "Stroke" if prediction[0] == 1 else "No Stroke"
                 col = "red" if prediction[0] == 1 else "green"
-                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]} Prediction: <span style='color: {col}'>{pred}</span></h2>""", unsafe_allow_html=True)
+                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]}</h2>
+                                <h3 style='text-align: center; color: gray'>Prediction: <span style='color: {col}'>{pred}</span></h3>
+                                <br/>
+                                <br/>
+                                """, unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
