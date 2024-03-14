@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1710395160 "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" "stroke_prediction.pdf" "stroke_prediction" 1710395161 0
+["pdflatex"] 1710459758 "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" "stroke_prediction.pdf" "stroke_prediction" 1710459758 0
   "C:/Users/zhxu3/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1710393313 476406 42cccb04cf0073e38aa973efc7055488 ""
   "C:/Users/zhxu3/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1691389883 24118870 f390f61ed315a5e9afac21dfd383aea3 ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233955448 1004 54797486969f23fa377b128694d548df ""
@@ -53,9 +53,9 @@
   "CorrelationPlot.png" 1710393428 113461 a90ae35fc6e15939a3255b09c5a322af ""
   "Density.png" 1710393431 141441 ecd9c7b8bb83adbfd3b1946d7b5694f0 ""
   "Models.png" 1710393434 23460 aad9ba68f3d882cfb96720f139970fd2 ""
-  "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" 1710395160 24138 71ca3eb7ee6f731f7a1619c534cc6a57 ""
-  "stroke_prediction.aux" 1710395161 629 9cefefd6ab845a534f0c0713258a6ab5 "pdflatex"
-  "stroke_prediction.tex" 1710395160 24138 71ca3eb7ee6f731f7a1619c534cc6a57 ""
+  "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" 1710459757 25143 26dbceb7b5d677282c78ff73905b0ebe ""
+  "stroke_prediction.aux" 1710459758 1121 eca8252b078b8b2bc31630457ca08877 "pdflatex"
+  "stroke_prediction.tex" 1710459757 25143 26dbceb7b5d677282c78ff73905b0ebe ""
   "table.png" 1710393435 43935 44bbd364b54b1a49bdbaaea606d8d536 ""
   (generated)
   "stroke_prediction.aux"
