@@ -22,4 +22,4 @@ Contains the LaTeX final report.
 This is where the code to run the streamlit app is.
 
 ### To run the app
-```streamlit run frontend.py
+```streamlit run frontend.py```
