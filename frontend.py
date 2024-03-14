@@ -1,6 +1,8 @@
 import streamlit as st
 from joblib import load
 
+from sklearn import metrics
+
 import numpy as np
 import pandas as pd
 
@@ -86,14 +88,18 @@ def main():
         knn_model = load('models/knn_model.joblib')
         stacking_classifier_model = load('models/stacking_classifier_model.joblib')
 
-        model_list = [rf_model, cls_model, svc_model, mlp_model, gnb_model, knn_model, stacking_classifier_model]
-        model_names = ['Random Forest', 'Logistic Regression', 'SVC', 'MLP', 'Gaussian Naive Bayes', 'KNN', 'Stacking Classifier']
+        model_list = [cls_model, rf_model, svc_model, mlp_model, gnb_model, knn_model, stacking_classifier_model]
+        model_names = ['Logistic Regression', 'Random Forest', 'SVC', 'MLP', 'Gaussian Naive Bayes', 'KNN', 'Stacking Classifier']
 
         if fl:
             for i in range(len(model_list)):
                 prediction = model_list[i].predict(X)
-                acc = np.mean(prediction == y)
-                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]} Accuracy: {acc}</h2>""", unsafe_allow_html=True)
+                confusion_matrix = metrics.confusion_matrix(y, prediction)
+                # acc = np.mean(prediction == y)
+                print(confusion_matrix[0][0])
+                acc = (confusion_matrix[0][0] + confusion_matrix[1][1]) / (confusion_matrix[0][0] + confusion_matrix[0][1] + confusion_matrix[1][0] + confusion_matrix[1][1])
+                recall = confusion_matrix[1][1] / (confusion_matrix[1][0] + confusion_matrix[1][1])
+                st.markdown(f"""<h2 style='text-align: center;'>{model_names[i]} Accuracy: {acc} \n Recall: {recall}</h2>""", unsafe_allow_html=True)
         else:
             scaler = load('scaler/scaler.joblib')
 
