@@ -2,6 +2,7 @@
 \usepackage{setspace} \singlespacing
 \usepackage{graphicx} % Required for inserting images
 \usepackage{fullpage}
+\usepackage{amsmath}
 \usepackage{url}
 \setlength{\parindent}{0pt}
 
@@ -128,6 +129,16 @@ For attributes ``work\_type'', ``Residence\_type'', apply one-hot encoding.
 When building the model, we use GridSearch to optimize the hyper-parameters of each model (when needed) and use cross-validation to check the accuracy and recall of each model.
 Here, we assume that the importance of the precision and recall score are the same, however it is possible that this is not the case.
 
+\medskip
+
+\textbf{Optimal Hyperparameters}
+
+Neural Network: \texttt{\{`hidden\_layer\_sizes': (15, 10)\}} \\
+Naive Bayes Classifier: \texttt{\{`var\_smoothing': 0.001\}} \\
+SVM Classifier: \texttt{\{`C': 100, `gamma': 1, `kernel': `rbf'\}} \\
+Random Forest: \texttt{\{`max\_depth': 10, `n\_estimators': 14\}} \\
+K Nearest Neighbors: \texttt{\{`metric': `manhattan', `n\_neighbors': 3, `weights': `distance'\}}
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{table.png}
@@ -136,13 +147,13 @@ Here, we assume that the importance of the precision and recall score are the sa
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{Models.png}
+\includegraphics[width=0.7\textwidth]{Models.png}
 \caption{Accuracy and Recall Histogram}{}
 \end{figure}
 
 \section*{Conclusion}
 
-Based on the above experimental results, we can find that the model built by Logistic regression has the best recall and f1 score, while Neural Network, Naive Bayes Classifier and Random Forest also have acceptable performance. Logistic regression is generally good at classification problems, so its performance is predictable. The Random Forest algorithm that performed well in the papers we cited has a higher F1 score than logistic regression, however it exhibits a significant decline in recall score. Our stacking approach indeed reaches the highest accuracy in models, as anticipated. However, both the recall and f1 scores are much lower than we had hoped. Further study is needed to determine the reason, however, one hypothesis is that the lower recall models feeding into it are the likely culprit. In this case, an interesting trial to attempt in the future would be to apply the stacking classifier strategy to only high recall algorithms and see how it performs.
+Synthetic Minority Oversampling Technique (SMOTE) was effective in improving the models’ precision/recall for stroke patients. Our initial hypothesis proved to be correct. Random Forest produced the best accuracy. By applying multiple algorithms using a stacking approach, we were able to achieve an even higher accuracy than the Random Forest model.Despite the lower accuracy, models like Logistic Regression, Multi-layer Perceptron, and Naive Bayes would work better in predicting stroke risk patients given its high recall. However, both the recall scores are much lower than we had hoped. Further study is needed to determine the reason, however, one hypothesis is that the lower recall models feeding into it are the likely culprit. In this case, an interesting trial to attempt in the future would be to apply the stacking classifier strategy to only high recall algorithms and see how it performs.
 
 \medskip
 
@@ -154,7 +165,7 @@ When testing the model on a test dataset without oversampling, it’s obvious th
 
 \medskip
 
-Finally, reflecting on our results and process indicates that a future study should focus on better optimization of hyper-parameters, and try to apply some more advanced strategies to the current model, such as Dropout regularization in neural networks. Additionally, changing up the algorithms included in the stack may generate very different results and due to its promise as a method, this is an opportunity well worth exploring.
+Finally, reflecting on our results and process indicates that a future study should focus on  better optimization of hyper-parameters, and try to apply some more advanced strategies to the current model, such as Dropout regularization in neural networks. Additionally, changing up the algorithms included in the stack may generate very different results and due to its promise as a method, this is an opportunity well worth exploring.
 
 \newpage
 \begin{thebibliography}{99}

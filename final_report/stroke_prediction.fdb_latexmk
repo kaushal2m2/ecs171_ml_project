@@ -1,9 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1710393455 "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" "stroke_prediction.pdf" "stroke_prediction" 1710393456 0
+["pdflatex"] 1710395160 "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" "stroke_prediction.pdf" "stroke_prediction" 1710395161 0
   "C:/Users/zhxu3/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1710393313 476406 42cccb04cf0073e38aa973efc7055488 ""
   "C:/Users/zhxu3/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1691389883 24118870 f390f61ed315a5e9afac21dfd383aea3 ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233955448 1004 54797486969f23fa377b128694d548df ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233955448 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -28,6 +31,11 @@
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1247596667 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580393758 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.cfg" 1616067285 584 2a1075dd71571459f59146da9f7502ad ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty" 1686931788 2222 499d61426192c39efd8f410ee1a52b9c ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty" 1686931787 4173 82ac04dfb1256038fad068287fbb4fe6 ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty" 1686931788 88371 d84032c0f422c3d1e282266c01bef237 ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty" 1686931788 4474 b811654f4bf125f11506d13d13647efb ""
+  "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty" 1686931788 2444 0d0c1ee65478277e8015d65b86983da2 ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/base/article.cls" 1687174146 20144 fbcf51733730d8f1a62143512ff5b1fe ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/base/omscmr.fd" 1687174146 2469 7cf25c0dd8ba984c37b877b83027725f ""
   "C:/Users/zhxu3/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo" 1687174146 8464 a4a9a859b7fd5b6c1450673c4d301348 ""
@@ -45,9 +53,9 @@
   "CorrelationPlot.png" 1710393428 113461 a90ae35fc6e15939a3255b09c5a322af ""
   "Density.png" 1710393431 141441 ecd9c7b8bb83adbfd3b1946d7b5694f0 ""
   "Models.png" 1710393434 23460 aad9ba68f3d882cfb96720f139970fd2 ""
-  "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" 1710393454 23764 37fdb10606e3c990e1c948363cfea772 ""
-  "stroke_prediction.aux" 1710393456 629 9cefefd6ab845a534f0c0713258a6ab5 "pdflatex"
-  "stroke_prediction.tex" 1710393454 23764 37fdb10606e3c990e1c948363cfea772 ""
+  "c:/Users/zhxu3/OneDrive/Documents/code/ecs171_ml_project/final_report/stroke_prediction.tex" 1710395160 24138 71ca3eb7ee6f731f7a1619c534cc6a57 ""
+  "stroke_prediction.aux" 1710395161 629 9cefefd6ab845a534f0c0713258a6ab5 "pdflatex"
+  "stroke_prediction.tex" 1710395160 24138 71ca3eb7ee6f731f7a1619c534cc6a57 ""
   "table.png" 1710393435 43935 44bbd364b54b1a49bdbaaea606d8d536 ""
   (generated)
   "stroke_prediction.aux"
