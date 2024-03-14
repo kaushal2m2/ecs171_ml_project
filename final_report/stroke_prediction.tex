@@ -101,7 +101,7 @@ By plotting the heatmap and histogram of each independent attribute, we attempt 
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=0.64\textwidth]{CorrelationPlot.png}
-\caption{Correlation Plot}
+\caption{Correlation between age and all other attributes except gender and residence type.}
 \end{figure}
 
 
@@ -111,7 +111,7 @@ Based on the above observation, we can predict that the model will have the high
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{Density.png}
-\caption{Density Plot}
+\caption{Strong predictors of stroke include age, heart\_disease, hypertension, avg\_gluclose\_level.}
 \end{figure}
 
 For each of the categorical attributes, we encode the set of categories in the following way:
@@ -126,8 +126,7 @@ For attributes ``work\_type'', ``Residence\_type'', apply one-hot encoding.
 
 \section*{Experimental Results}
 
-When building the model, we use GridSearch to optimize the hyper-parameters of each model (when needed) and use cross-validation to check the accuracy and recall of each model.
-Here, we assume that the importance of the precision and recall score are the same, however it is possible that this is not the case.
+When building the model, we use GridSearch to optimize the hyper-parameters of each model (when needed) and use cross-validation to check the accuracy and recall of each model. Recall for stroke is an important metric to predict true positives on stroke patients. This is something we are looking for in our models since we want to correctly predict a patient's risk for stroke rather than not, which can potentially be life threatening. Precision for stroke will be low across our models as expected, given that we did not oversample the testing data to validate our results.
 
 \medskip
 
@@ -142,18 +141,23 @@ K Nearest Neighbors: \texttt{\{`metric': `manhattan', `n\_neighbors': 3, `weight
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{table.png}
-\caption{Accuracy and Recall Table}
+\caption{Random Forest model achieved the best outcome, at 88\% test accuracy. With the Stacking Classifier, we were able to achieve the highest test accuracy of 90\%. Logistic Regression (73\% Recall), Multi-layer Perceptron (87\% Recall),  Gaussian Naive Bayes (85\% Recall) would work best for predicting stroke risk patients.}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{Models.png}
-\caption{Accuracy and Recall Histogram}{}
+\includegraphics[width=0.55\textwidth]{Models.png}
+\caption{Logistic Regression strikes a good balance between 76\% accuracy and 75\% recall.}
 \end{figure}
 
 \section*{Conclusion}
 
-Synthetic Minority Oversampling Technique (SMOTE) was effective in improving the models’ precision/recall for stroke patients. Our initial hypothesis proved to be correct. Random Forest produced the best accuracy. By applying multiple algorithms using a stacking approach, we were able to achieve an even higher accuracy than the Random Forest model.Despite the lower accuracy, models like Logistic Regression, Multi-layer Perceptron, and Naive Bayes would work better in predicting stroke risk patients given its high recall. However, both the recall scores are much lower than we had hoped. Further study is needed to determine the reason, however, one hypothesis is that the lower recall models feeding into it are the likely culprit. In this case, an interesting trial to attempt in the future would be to apply the stacking classifier strategy to only high recall algorithms and see how it performs.
+Synthetic Minority Oversampling Technique (SMOTE) was effective in improving the models’ precision/recall for stroke patients. Our initial hypothesis proved to be correct. Random Forest produced the best accuracy. By applying multiple algorithms using a stacking approach, we were able to achieve an even higher accuracy than the Random Forest model. However, both the recall scores are much lower than we had hoped. Further study is needed to determine the reason, however, one hypothesis is that the lower recall models feeding into it are the likely culprit. In this case, an interesting trial to attempt in the future would be to apply the stacking classifier strategy to only high recall algorithms and see how it performs.
+
+\medskip
+
+Despite the lower accuracy, models like Logistic Regression, Multi-layer Perceptron, and Naive Bayes would work better in predicting stroke risk patients given its high recall.
+Logistic Regression is the most comprehensive model given its good balance between accuracy and recall, which was also the most consistent in predicting stroke patients through our web based front-end. As a result, this is the most comprehensive model that we have decided on.
 
 \medskip
 
